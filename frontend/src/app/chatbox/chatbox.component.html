@@ -1,0 +1,12 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="message">
+            Message
+        </label>
+        <input id="message" type="text" formControlName="message">
+    </div>
+    <button class="button" type="submit">Send</button>
+</form>
+<div class="" *ngFor="let msg of messages">
+    <span>{{ msg }}</span>
+</div>

@@ -1,0 +1,30 @@
+import { Injectable, OnInit } from '@angular/core';
+import { Socket } from 'ngx-socket-io';
+import { map } from 'rxjs/operators';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MessageService implements OnInit {
+
+  messages:string[] = [];
+
+  constructor(private socket: Socket) {
+    console.log('Message service initialised');
+    this.socket.on('msgToClient', (message:string) => {
+      console.log('Adding message');
+      this.addMessage(message);
+    })
+  }
+
+  ngOnInit(): void {
+  }
+
+  addMessage(message: string) { this.messages.push(message); }
+
+  getMessages() { return this.messages; }
+
+  sendMessage(msg: string) {
+    this.socket.emit('msgToServer', msg);
+  }
+}
