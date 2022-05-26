@@ -1,11 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MessageService implements OnInit {
+export class MessageService {
 
   messages:string[] = [];
 
@@ -15,9 +14,6 @@ export class MessageService implements OnInit {
       console.log('Adding message');
       this.addMessage(message);
     })
-  }
-
-  ngOnInit(): void {
   }
 
   addMessage(message: string) { this.messages.push(message); }
