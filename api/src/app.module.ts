@@ -3,6 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AppGateway } from './app.gateway';
+import { MessageModule } from './message/message.module';
+import { Message } from './message/message.entity';
 
 @Module({
   imports: [
@@ -12,9 +14,10 @@ import { AppGateway } from './app.gateway';
       username: 'user',
       password: 'password',
       database: 'db',
-      entities: [],
+      entities: [Message],
       synchronize: true,
-    })
+    }),
+    MessageModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppGateway],

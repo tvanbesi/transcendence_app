@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { MessageService, msgContent } from './message.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
+
+  constructor(private services: MessageService) {}
+
+  testValue: Observable<msgContent> = this.services.getMessageHistory();
 }

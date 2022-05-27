@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
@@ -17,6 +18,7 @@ import { ChatboxComponent } from './chatbox/chatbox.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     SocketIoModule.forRoot(config),
     AppRoutingModule,
     FormsModule,

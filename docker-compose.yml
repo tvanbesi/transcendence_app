@@ -11,7 +11,6 @@ services:
     volumes:
       - ./api:/transcendence_app/api/src/app
       - /transcendence_app/api/src/app/node_modules
-    # or npm run start:debug --> vscode debugger
     depends_on:
       - postgres
     environment:
@@ -33,14 +32,13 @@ services:
     volumes:
       - ./frontend:/transcendence_app/frontend/src/app
       - /transcendence_app/frontend/src/app/node_modules
+    depends_on:
+      - api
     ports:
       - 4200:4200
       - 49153:49153
     networks:
       - net-front
-    # maybe user networks instead?
-    #links:
-    #  - api
   
   postgres:
     image: postgres:latest
